@@ -6,6 +6,8 @@ body{
     background-image: url("./img/fundo_pagina.jpg");
     background-position: center;
     background-size: cover;
+    margin: 0;
+    padding: 0;
 }
 
 .app{
@@ -114,7 +116,7 @@ input,select{
 }
 @media screen and (max-width:480px){
     .app{
-        width: 350px;
+        width: 90vw;
         margin: 0 auto 50px;
        
     }
