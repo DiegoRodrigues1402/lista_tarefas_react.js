@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import "./App.css"
 import Todo from './components/Todo'
 import TodoForm from './components/TodoForm';
@@ -9,28 +9,37 @@ import Filter from './components/Filter';
 
 function App() {
   const [todos, setTodos] = useState(
-    [
-      {
-        id: 1,
-        text: "Criar funcionalidades x no sistema",
-        category: "Trabalho",
-        isCompleted: false
-      },
-      {
-        id: 2,
-        text: "Ir para a academia",
-        category: "Pessoal",
-        isCompleted: false
-      },
-      {
-        id: 3,
-        text: "Estudar React",
-        category: "Estudos",
-        isCompleted: false
-      }
-    ]
-  )
+    JSON.parse(localStorage.getItem("todos")) || []
+  );
+  
+    // [
+    //   {
+    //     id: 1,
+    //     text: "Criar funcionalidades x no sistema",
+    //     category: "Trabalho",
+    //     isCompleted: false
+    //   },
+    //   {
+    //     id: 2,
+    //     text: "Ir para a academia",
+    //     category: "Pessoal",
+    //     isCompleted: false
+    //   },
+    //   {
+    //     id: 3,
+    //     text: "Estudar React",
+    //     category: "Estudos",
+    //     isCompleted: false
+    //   }
+    // ]
+  
+  useEffect(() => {
+    //com essa linha estou convertendo o json para string
+    localStorage.setItem("todos", JSON.stringify(todos))
+   },[todos]
+   )
 
+   
   //useState para pesquisa
   const [search, setSearch] = useState("");
 
